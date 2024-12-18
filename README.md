@@ -21,13 +21,13 @@ A production-ready Django boilerplate for quick deployment on Render.com.
 
 1. Clone the repository:
 ```bash
-git clone [link](https://github.com/gonzamordecki/render-django-boilerplate)
-cd django-render-boilerplate
+git clone https://github.com/gonzamordecki/render-django-boilerplate
+cd render-django-boilerplate
 ```
 
-2. Create a virtual environment and activate it:
+2. Create a virtual environment (use at least python 3.9) and activate it:
 ```bash
-python -m venv venv
+python3.9 -m venv venv
 source venv/bin/activate  # On Windows use: venv\Scripts\activate
 ```
 
@@ -60,18 +60,14 @@ Visit `http://localhost:8000` to see your app running.
 
 ## Deployment on Render
 
-1. Fork or clone this repository to your GitHub account.
+1. Go to render.yaml and change line 10 to your project name (i.e. 'my-django-app')
 
-2. Create a new Web Service on Render:
+2. Go to [Render](https://render.com/) and create a new blueprint:
    - Connect your GitHub repository
-   - Select the Python environment
-   - Use the following settings:
-     - **Build Command**: `./build.sh`
-     - **Start Command**: `python -m gunicorn main.asgi:application -k uvicorn.workers.UvicornWorker`
+   - Give the blueprint a name (i.e. 'my-django-app')
+   - Click on "Deploy Blueprint"
 
-3. Add the following environment variables in Render:
-   - `PYTHON_VERSION`: 3.9
-   - `WEB_CONCURRENCY`: 4
+3. Your service should be live! 🎉
 
 Render will automatically:
 - Create a PostgreSQL database
